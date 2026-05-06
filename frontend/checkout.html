@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your order on CampusMart.">
+  <title>Checkout — CampusMart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+  <header class="navbar" id="navbar"></header>
+
+  <main class="page-content">
+    <div class="container container--narrow">
+      <div class="page-header">
+        <div>
+          <h1 class="page-header__title">Checkout</h1>
+          <p class="page-header__subtitle">Complete your order details</p>
+        </div>
+      </div>
+
+      <div class="checkout-layout">
+        <!-- Form -->
+        <div class="checkout-form" id="checkoutForm">
+          <div class="checkout-section">
+            <h2 class="checkout-section__title">📱 Your Details</h2>
+            <div class="form-group">
+              <label class="form-label" for="custName">Full Name</label>
+              <input type="text" class="form-input" id="custName" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="custPhone">Phone Number</label>
+              <input type="tel" class="form-input" id="custPhone" placeholder="+91 98765 43210" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="checkout-summary" id="checkoutSummary">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Order Success Modal -->
+  <div class="order-modal" id="orderModal">
+    <div class="order-modal__content">
+      <div class="order-modal__icon">🎉</div>
+      <h2 class="order-modal__title">Order Placed!</h2>
+      <p class="order-modal__desc">Your order has been confirmed. You'll receive updates on your phone.</p>
+      <div class="order-modal__id" id="orderId"></div>
+      <a href="index.html" class="btn btn--primary btn--lg">Back to Home</a>
+    </div>
+  </div>
+
+  <footer class="footer" id="footer"></footer>
+  <script src="js/common.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

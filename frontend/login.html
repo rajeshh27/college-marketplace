@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — CampusMart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    .login-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-secondary);
+      padding: var(--space-4);
+    }
+    .login-card {
+      background: var(--bg-card);
+      padding: var(--space-10);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid var(--border-light);
+      text-align: center;
+    }
+    .login-card__icon { font-size: 3rem; margin-bottom: var(--space-4); }
+    .login-card__title { font-family: var(--font-display); font-size: var(--fs-2xl); margin-bottom: var(--space-2); }
+    .login-card__subtitle { color: var(--text-secondary); margin-bottom: var(--space-8); font-size: var(--fs-sm); }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-card__icon">🔐</div>
+      <h1 class="login-card__title">Admin Access</h1>
+      <p class="login-card__subtitle">Please enter your credentials to continue.</p>
+      
+      <form id="loginForm" class="admin-form">
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input type="text" id="username" class="form-input" placeholder="Enter username" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn btn--primary btn--lg" style="width:100%; margin-top:var(--space-4);">Login →</button>
+      </form>
+      <div id="loginError" style="color:var(--accent-coral); margin-top:var(--space-4); font-size:var(--fs-sm); display:none;">
+        Invalid credentials. Please try again.
+      </div>
+    </div>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      const error = document.getElementById('loginError');
+
+      if (user === 'acet' && pass === 'admin') {
+        sessionStorage.setItem('admin_auth', 'true');
+        window.location.href = 'admin.html';
+      } else {
+        error.style.display = 'block';
+        Toast.show('Invalid username or password', 'error');
+      }
+    });
+  </script>
+</body>
+</html>

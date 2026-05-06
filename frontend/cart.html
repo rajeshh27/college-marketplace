@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review your cart and checkout on CampusMart.">
+  <title>Cart — CampusMart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+  <header class="navbar" id="navbar"></header>
+
+  <main class="page-content">
+    <div class="container container--narrow">
+      <div class="page-header">
+        <div>
+          <h1 class="page-header__title">Your Cart</h1>
+          <p class="page-header__subtitle" id="cartSubtitle">Review your items before checkout</p>
+        </div>
+      </div>
+
+      <div class="cart-layout">
+        <div class="cart-items" id="cartItems">
+          <!-- Populated dynamically -->
+        </div>
+        <div class="cart-summary" id="cartSummary">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" id="footer"></footer>
+  <script src="js/common.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

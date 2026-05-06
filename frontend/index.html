@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CampusMart — Your premium hyperlocal campus marketplace for fast food, xerox, cafe, and stationery.">
+  <title>CampusMart — Campus Marketplace</title>
+
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <!-- Fonts loaded as non-blocking link instead of CSS @import -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <header class="navbar" id="navbar"></header>
+
+  <!-- Hero Section with Three.js Canvas -->
+  <section class="hero" id="heroSection">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
+      <div class="hero__badge">🎓 Built for Campus Life</div>
+      <h1 class="hero__title">
+        Your Campus.<br>
+        <span class="hero__title--accent">Delivered.</span>
+      </h1>
+      <p class="hero__subtitle">Discover nearby shops, grab food, print notes & get stationery — all in minutes.</p>
+      <div class="hero__search search-bar">
+        <span class="search-bar__icon">🔍</span>
+        <input type="text" class="search-bar__input" id="heroSearch" placeholder="Search shops or products..." autocomplete="off">
+      </div>
+      <div class="hero__categories" id="heroCategories">
+        <button class="hero__cat-card" data-category="food" onclick="navigateTo('shops.html?cat=food')">
+          <span class="hero__cat-icon">🍔</span>
+          <span class="hero__cat-label">Food</span>
+        </button>
+        <button class="hero__cat-card" data-category="xerox" onclick="navigateTo('shops.html?cat=xerox')">
+          <span class="hero__cat-icon">📄</span>
+          <span class="hero__cat-label">Xerox</span>
+        </button>
+        <button class="hero__cat-card" data-category="cafe" onclick="navigateTo('shops.html?cat=cafe')">
+          <span class="hero__cat-icon">☕</span>
+          <span class="hero__cat-label">Cafe</span>
+        </button>
+        <button class="hero__cat-card" data-category="stationery" onclick="navigateTo('shops.html?cat=stationery')">
+          <span class="hero__cat-icon">✏️</span>
+          <span class="hero__cat-label">Stationery</span>
+        </button>
+      </div>
+    </div>
+    <div class="hero__scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="hero__scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- Nearby Shops Section -->
+  <section class="section" id="nearbySection">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <h2 class="section__title">Nearby Shops</h2>
+          <p class="section__subtitle">Quick delivery from shops around your campus</p>
+        </div>
+        <a href="shops.html" class="btn btn--secondary">View All →</a>
+      </div>
+      <div class="shops-scroll" id="nearbyShops">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Offers Section -->
+  <section class="section offers-section">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <h2 class="section__title">🎉 Student Offers</h2>
+          <p class="section__subtitle">Exclusive deals just for campus students</p>
+        </div>
+      </div>
+      <div class="grid grid--3" id="offersGrid">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="section how-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--space-12);">
+        <h2 class="section__title">How It Works</h2>
+        <p class="section__subtitle">Order in 3 simple steps</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="how-card" data-animate data-tilt>
+          <div class="how-card__step">1</div>
+          <div class="how-card__icon">🔍</div>
+          <h3 class="how-card__title">Browse</h3>
+          <p class="how-card__desc">Discover nearby shops and products on your campus</p>
+        </div>
+        <div class="how-card" data-animate data-tilt>
+          <div class="how-card__step">2</div>
+          <div class="how-card__icon">🛒</div>
+          <h3 class="how-card__title">Add to Cart</h3>
+          <p class="how-card__desc">Pick what you need and add items to your cart</p>
+        </div>
+        <div class="how-card" data-animate data-tilt>
+          <div class="how-card__step">3</div>
+          <div class="how-card__icon">🚀</div>
+          <h3 class="how-card__title">Get Delivered</h3>
+          <p class="how-card__desc">Place your order and get it delivered in minutes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card" data-animate>
+          <div class="stat-card__number">50+</div>
+          <div class="stat-card__label">Campus Shops</div>
+        </div>
+        <div class="stat-card" data-animate>
+          <div class="stat-card__number">500+</div>
+          <div class="stat-card__label">Products</div>
+        </div>
+        <div class="stat-card" data-animate>
+          <div class="stat-card__number">10K+</div>
+          <div class="stat-card__label">Orders Delivered</div>
+        </div>
+        <div class="stat-card" data-animate>
+          <div class="stat-card__number">&lt;15</div>
+          <div class="stat-card__label">Avg. Delivery (mins)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="footer"></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js" defer></script>
+</body>
+</html>

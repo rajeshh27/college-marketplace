@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Admin panel for managing CampusMart shops, products, and orders.">
+  <title>Admin Panel — CampusMart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>
+    if (sessionStorage.getItem('admin_auth') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body>
+  <header class="navbar" id="navbar"></header>
+
+  <main class="page-content">
+    <div class="container">
+      <div class="page-header">
+        <div>
+          <h1 class="page-header__title">⚙️ Admin Panel</h1>
+          <p class="page-header__subtitle">Manage shops, products, and orders</p>
+        </div>
+        <div style="display:flex; gap:var(--space-3);">
+          <button class="btn btn--outline" onclick="sessionStorage.removeItem('admin_auth'); window.location.href='login.html';">🚪 Logout</button>
+          <button class="btn btn--primary" onclick="seedDatabase()">🌱 Seed Database</button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs" id="adminTabs">
+        <button class="admin-tab active" data-tab="shops">🏪 Shops</button>
+        <button class="admin-tab" data-tab="products">📦 Products</button>
+        <button class="admin-tab" data-tab="orders">📋 Orders</button>
+      </div>
+
+      <!-- Shops Tab -->
+      <div class="admin-panel" id="panel-shops">
+        <div class="admin-form">
+          <h3 class="admin-form__title">Add New Shop</h3>
+          <div class="admin-form__grid">
+            <div class="form-group">
+              <label class="form-label">Shop Name</label>
+              <input type="text" class="form-input" id="shopName" placeholder="e.g. Campus Bites">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select class="form-select" id="shopCategory">
+                <option value="food">🍔 Food</option>
+                <option value="xerox">📄 Xerox</option>
+                <option value="cafe">☕ Cafe</option>
+                <option value="stationery">✏️ Stationery</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Distance</label>
+              <input type="text" class="form-input" id="shopDistance" placeholder="e.g. 200m">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Delivery Time</label>
+              <input type="text" class="form-input" id="shopDelivery" placeholder="e.g. 15 mins">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Image URL</label>
+              <input type="url" class="form-input" id="shopImage" placeholder="https://...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <input type="text" class="form-input" id="shopDesc" placeholder="Brief description">
+            </div>
+          </div>
+          <button class="btn btn--primary" onclick="addShop()">+ Add Shop</button>
+        </div>
+        <div class="admin-list" id="shopsList">Loading...</div>
+      </div>
+
+      <!-- Products Tab -->
+      <div class="admin-panel hidden" id="panel-products">
+        <div class="admin-form">
+          <h3 class="admin-form__title">Add New Product</h3>
+          <div class="admin-form__grid">
+            <div class="form-group">
+              <label class="form-label">Product Name</label>
+              <input type="text" class="form-input" id="prodName" placeholder="e.g. Classic Burger">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Price (₹)</label>
+              <input type="number" class="form-input" id="prodPrice" placeholder="89" min="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Shop</label>
+              <select class="form-select" id="prodShop">
+                <option value="">Select shop...</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Image URL</label>
+              <input type="url" class="form-input" id="prodImage" placeholder="https://...">
+            </div>
+          </div>
+          <button class="btn btn--primary" onclick="addProduct()">+ Add Product</button>
+        </div>
+        <div class="admin-list" id="productsList">Loading...</div>
+      </div>
+
+      <!-- Orders Tab -->
+      <div class="admin-panel hidden" id="panel-orders">
+        <div class="admin-list" id="ordersList">Loading...</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" id="footer"></footer>
+  <script src="js/common.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
